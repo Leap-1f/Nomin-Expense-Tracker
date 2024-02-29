@@ -1,4 +1,4 @@
-export const LoginFunction = () => {
+export function LoginFunction() {
   return (
     <div className="max-w-screen-xl m-auto">
       <div className="main  container ">
@@ -56,4 +56,4 @@ export const LoginFunction = () => {
       </div>
     </div>
   );
-};
+}
