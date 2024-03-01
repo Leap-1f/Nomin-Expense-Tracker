@@ -1,18 +1,22 @@
-export function LoginFunction() {
+import Link from "next/link";
+
+export default function LoginFunction() {
   return (
-    <div className="max-w-screen-xl m-auto">
-      <div className="main  container ">
-        <div className="bg-white w-full flex felx-row">
-          <div className="flex flex-col justify-center  gap-10 items-center">
+    <div className="max-w-screen-xl h-screen  ">
+      <div className=" flex flex-row justify-center items-center">
+        <div className="w-full h-full">
+          <div className="flex flex-col justify-center gap-10 items-center">
             <div>
               <img src="./logo.svg" alt="" />
             </div>
 
-            <div>
-              <h1>Welcome Back</h1>
-              <p>Welcome back, Please enter your details</p>
+            <div className="flex flex-col gap-1 justify-center">
+              <h1 className="text-xl">Welcome Back</h1>
+              <p className="text-base">
+                Welcome back, Please enter your details
+              </p>
             </div>
-            <div>
+            <div className="flex flex-col gap-4">
               <label className="input input-bordered flex items-center gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -42,17 +46,19 @@ export function LoginFunction() {
                 <input type="password" className="grow" value="password" />
               </label>
 
-              <button className="btn btn-info">Log in</button>
+              <button className="btn btn-primary flex-initial">Log in</button>
             </div>
 
-            <div>
-              <p>Don't have account?</p>
-              <p>Sign up</p>
+            <div className="flex flex-row gap-1 *:text-base">
+              <p className="">Don't have account?</p>
+
+              <Link href={{ pathname: "/register" }}>
+                <p className="text-primary">Sign up</p>
+              </Link>
             </div>
           </div>
-          <div className="divider lg:divider-horizontal"></div>
-          <div className="blue bg-blue-900 "></div>
         </div>
+        <div className="bg-primary border-primary  w-full h-full"></div>
       </div>
     </div>
   );
