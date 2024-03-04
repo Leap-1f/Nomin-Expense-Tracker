@@ -16,7 +16,7 @@ export default function Home() {
             <li>Loader</li>
           </Link>
 
-          <Link href={{ pathname: "/loading" }}>
+          <Link href={{ pathname: "/dashboard" }}>
             <li>Dashboard</li>
           </Link>
 
