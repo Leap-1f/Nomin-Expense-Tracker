@@ -1,6 +1,51 @@
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { v4 as uuidv4, v4 } from "uuid";
+import { date } from "yup";
 
 export default function LoginFunction() {
+  // const [data, SetData] = useState([
+  //   {
+  //     id: "",
+  //     username: "",
+  //     email: "",
+  //     password: "",
+  //     avatar_img: "",
+  //     created_date: date,
+  //     updated_date: date,
+  //     curency_type: "",
+  //   },
+  // ]);
+
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
+  // const createData = async () => {
+  //   const id = uuidv4();
+
+  //   try {
+  //     const response = await fetch(API_ENDPOINT, {
+  //       method: "POST",
+  //       mode: "cors",
+  //       headers: {
+  //         Accept: "application/json, text/plain, */*",
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ ...userData, id }),
+  //     });
+  //     const responseData = await response.json();
+  //     setData(responseData);
+  //   } catch (error) {
+  //     console.error("Error creating data:", error);
+  //   }
+  // };
+  // console.log(data);
+
+  // const addData = () => {
+  //   console.log(userData);
+  //   createData();
+  // };
   return (
     <div className="max-w-screen-xl h-screen  ">
       <div className=" flex flex-row justify-center items-center">

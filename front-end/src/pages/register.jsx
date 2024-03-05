@@ -1,5 +1,48 @@
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { v4 as uuidv4, v4 } from "uuid";
+
 export default function RegisterFunction() {
+  const [userData, setUserData] = useState([
+    {
+      id: "",
+      name: "",
+      email: "",
+      password: "",
+      avatar_img: "",
+      curency_type: "",
+    },
+  ]);
+
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
+  const createData = async () => {
+    const id = uuidv4();
+
+    try {
+      const response = await fetch(API_ENDPOINT, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...userData, id }),
+      });
+      const responseData = await response.json();
+      setData(responseData);
+    } catch (error) {
+      console.error("Error creating data:", error);
+    }
+  };
+  // console.log(data);
+
+  const addData = () => {
+    console.log(userData);
+    createData();
+  };
   return (
     <div className="max-w-screen-xl m-auto">
       <div className="main  container ">
@@ -25,7 +68,14 @@ export default function RegisterFunction() {
                 >
                   <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                 </svg>
-                <input type="text" className="grow" placeholder="Username" />
+                <input
+                  type="text"
+                  onChange={(event) =>
+                    setUserData({ ...userData, name: event.target.value })
+                  }
+                  className="grow"
+                  placeholder="Username"
+                />
               </label>
               <label className="input input-bordered flex items-center gap-2">
                 <svg
@@ -37,7 +87,14 @@ export default function RegisterFunction() {
                   <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
                   <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                 </svg>
-                <input type="text" className="grow" placeholder="Email" />
+                <input
+                  type="text"
+                  onChange={(event) =>
+                    setUserData({ ...userData, email: event.target.value })
+                  }
+                  className="grow"
+                  placeholder="Email"
+                />
               </label>
 
               <label className="input input-bordered flex items-center gap-2">
@@ -53,7 +110,14 @@ export default function RegisterFunction() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <input type="password" className="grow" value="password" />
+                <input
+                  type="password"
+                  onChange={(event) =>
+                    setUserData({ ...userData, password: event.target.value })
+                  }
+                  className="grow"
+                  value="password"
+                />
               </label>
               <label className="input input-bordered flex items-center gap-2">
                 <svg
@@ -68,7 +132,14 @@ export default function RegisterFunction() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <input type="Re-password" className="grow" value="password" />
+                <input
+                  type="Re-password"
+                  onChange={(event) =>
+                    setUserData({ ...userData, password: event.target.value })
+                  }
+                  className="grow"
+                  value="password"
+                />
               </label>
               <link rel="stylesheet" href={{ pathname: "/loading" }} />
               <button className=" btn  btn-primary ">Log in</button>
@@ -77,7 +148,7 @@ export default function RegisterFunction() {
             <div className="flex flex-row gap-1 *:text-base">
               <p className="">Already have an account?</p>
               <Link href={{ pathname: "/regsiter" }}>
-                <p className="text-primary">Login in</p>
+                <p className="text-primary">Sign up</p>
               </Link>
             </div>
           </div>
