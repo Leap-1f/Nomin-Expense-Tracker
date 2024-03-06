@@ -6,4 +6,6 @@ const user = Router();
 
 user.route("/").get(getAllUsers);
 
+user.route("/signup")
+
 export { user };

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4, v4 } from "uuid";
+import { SignupSchema } from "../validations/userValidation.js";
 
 export default function RegisterFunction() {
   const API_ENDPOINT = "http://localhost:8080/register";
@@ -39,8 +40,10 @@ export default function RegisterFunction() {
   };
   // console.log(userData);
 
-  const addData = (event) => {
+  const addData = async (event) => {
     event.preventDefault();
+    const isValid = await SignupSchema.isValid(userData);
+    console.log(isValid);
     console.log(userData);
     createData();
   };
