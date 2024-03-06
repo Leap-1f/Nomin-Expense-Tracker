@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4, v4 } from "uuid";
-import { date } from "yup";
 
 export default function LoginFunction() {
+  const [values, SetValues] = useState([
+    {
+      email: "",
+      password: "",
+    },
+  ]);
   // const [data, SetData] = useState([
   //   {
   //     id: "",
