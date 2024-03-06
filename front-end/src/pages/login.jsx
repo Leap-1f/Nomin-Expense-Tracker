@@ -9,18 +9,10 @@ export default function LoginFunction() {
       password: "",
     },
   ]);
-  // const [data, SetData] = useState([
-  //   {
-  //     id: "",
-  //     username: "",
-  //     email: "",
-  //     password: "",
-  //     avatar_img: "",
-  //     created_date: date,
-  //     updated_date: date,
-  //     curency_type: "",
-  //   },
-  // ]);
+
+  const handleInput = (event) => {
+    SetValues;
+  };
 
   // useEffect(() => {
   //   getData();
