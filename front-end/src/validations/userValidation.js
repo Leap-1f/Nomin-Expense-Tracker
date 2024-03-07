@@ -11,7 +11,6 @@ export const SignupSchema = yup.object().shape({
     .string()
     .min(4, "Password must be at least 4 charaters")
     .max(10, "assword must be max 10 charaters")
-    // .password("Invalid password")
     .required("Required"),
   confirmPassword: yup
     .string()
