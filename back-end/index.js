@@ -9,6 +9,8 @@ import { sql } from "./config/database.js";
 
 // app.use("/users", user);
 
+let users = [];
+
 const port = 8080;
 const app = express();
 app.use(cors());
@@ -36,25 +38,25 @@ app.post("/", async (request, response) => {
     response.send(result);
   } catch (err) {
     console.error(err);
-    response.status(400).json({ message: "Failed to add user" });
+    response.status(200).json({ message: "Failed to add user" });
   }
-  // const salt = bcrypt.genSaltSync(1);
-  // const hashedPassword = await bcrypt.hash(password, salt);
-  // users.push({ name: name, password: hashedPassword });
-  // console.log(users);
-  // response.send("User created succesfully");
+  const salt = bcrypt.genSaltSync(1);
+  const hashedPassword = await bcrypt.hash(password, salt);
+  users.push({ name: name, password: hashedPassword });
+  console.log(users);
+  response.send("User created succesfully");
 });
 
-// app.post("/login", async (request, response) => {
-//   const { name, password } = request.body;
-//   const filteredUser = users.filter((user) => user.name === name);
-//   const isValid = await bcrypt.compare(password, filteredUser[0].password);
+app.post("/login", async (request, response) => {
+  const { name, password } = request.body;
+  const filteredUser = users.filter((user) => user.name === name);
+  const isValid = await bcrypt.compare(password, filteredUser[0].password);
 
-//   if (isValid) {
-//     response.send("login successfully");
-//   }
-//   response.send("paasword and username is not valid");
-// });
+  if (isValid) {
+    response.send("login successfully");
+  }
+  response.send("password and username is not valid");
+});
 
 app.listen(port, () => {
   console.log(` http://localhost:${port}`);

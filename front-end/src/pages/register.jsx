@@ -8,16 +8,12 @@ export default function RegisterFunction() {
 
   const [userData, setUserData] = useState();
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-
-  const createData = async () => {
-        event.preventDefault();
+  const createData = async (event) => {
+    event.preventDefault();
 
     console.log(userData);
     try {
-      const response = await fetch(API_ENDPOINT, {
+      const response = await fetch("http://localhost:8080/", {
         method: "POST",
         mode: "cors",
         headers: {
@@ -32,7 +28,6 @@ export default function RegisterFunction() {
       console.error("Error creating data:", error);
     }
   };
-  // console.log(userData);
 
   // const addData = async (event) => {
   //   event.preventDefault();
