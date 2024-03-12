@@ -1,4 +1,4 @@
-import { Header } from "../components/header";
+import { Header } from "../components/Header";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";

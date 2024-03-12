@@ -16,11 +16,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// let users = [];
-
-// app.get("/", (request, response) => {
-//   response.send("huselt irlee");
-// });
+app.get("/", (request, response) => {
+  response.send("huselt irlee");
+});
 
 // app.get("/users", async (request, response) => {
 //   const data = await sql`SELECT * FROM users`;
@@ -40,23 +38,26 @@ app.post("/", async (request, response) => {
     console.error(err);
     response.status(200).json({ message: "Failed to add user" });
   }
-  const salt = bcrypt.genSaltSync(1);
-  const hashedPassword = await bcrypt.hash(password, salt);
-  users.push({ name: name, password: hashedPassword });
-  console.log(users);
-  response.send("User created succesfully");
+  // const salt = bcrypt.genSaltSync(1);
+  // const hashedPassword = await bcrypt.hash(password, salt);
+  // users.push({ name: name, password: hashedPassword });
+  // console.log(users);
+  // response.send("User created succesfully");
 });
+// app.get("/", async (request, response) => {
+//   response.send("User test succesfully");
+// });
 
-app.post("/login", async (request, response) => {
-  const { name, password } = request.body;
-  const filteredUser = users.filter((user) => user.name === name);
-  const isValid = await bcrypt.compare(password, filteredUser[0].password);
+// app.post("/login", async (request, response) => {
+//   const { name, password } = request.body;
+//   const filteredUser = users.filter((user) => user.name === name);
+//   const isValid = await bcrypt.compare(password, filteredUser[0].password);
 
-  if (isValid) {
-    response.send("login successfully");
-  }
-  response.send("password and username is not valid");
-});
+//   if (isValid) {
+//     response.send("login successfully");
+//   }
+//   response.send("password and username is not valid");
+// });
 
 app.listen(port, () => {
   console.log(` http://localhost:${port}`);
