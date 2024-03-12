@@ -23,6 +23,10 @@ export default function Home() {
           <Link href={{ pathname: "/steps" }}>
             <li>Step</li>
           </Link>
+
+          <Link href={{ pathname: "/records" }}>
+            <li>Records</li>
+          </Link>
         </ul>
       </div>
     </div>
