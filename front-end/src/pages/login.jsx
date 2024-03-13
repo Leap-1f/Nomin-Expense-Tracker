@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
+import { useRouter } from "next/router";
 
 export default function LoginFunction() {
+  const router = useRouter();
   const [values, setValues] = useState([
     {
       email: "",
@@ -20,7 +21,8 @@ export default function LoginFunction() {
     event.preventDefault();
     setValues;
     console.log(values);
-    let inputobj = { email: email, password: password };
+
+    // let inputobj = { email: email, password: password };
     try {
       const response = await fetch("http://localhost:8080/", {
         method: "POST",
@@ -29,19 +31,19 @@ export default function LoginFunction() {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(inputobj),
+        body: JSON.stringify(values),
       });
       const responseData = await response.json();
       if (object.keys(responseData).length === 0) {
         toast.error("Login failed, invalid email and password");
       } else {
         toast.success("Success");
-        sessionStorage.setItem("username", username);
-        sessionStorage.setItem("jwttoken", resp.jwtToken);
-        useNavigate("/");
+        // sessionStorage.setItem("username", username);
+        // sessionStorage.setItem("jwttoken", resp.jwtToken);
+        // useNavigate("/");
       }
-
       setValues(responseData);
+      router.push("/dashboard");
     } catch (error) {
       console.error("Error creating data:", error);
     }
@@ -49,8 +51,8 @@ export default function LoginFunction() {
 
   return (
     <div className="max-w-screen-xl h-screen  ">
-      <div className=" flex flex-row justify-center items-center">
-        <div className="w-full h-full">
+      <div className=" flex flex-row justify-center items-center mt-5">
+        <div className="w-full h-full bg-white">
           <div className="flex flex-col justify-center gap-10 items-center">
             <div>
               <img src="./logo.svg" alt="" />
@@ -82,7 +84,7 @@ export default function LoginFunction() {
                     className="grow"
                     placeholder="Email"
                     onChange={(event) =>
-                      SetValues({ ...values, email: event.target.value })
+                      setValues({ ...values, email: event.target.value })
                     }
                   />
                 </label>
@@ -105,25 +107,24 @@ export default function LoginFunction() {
                     type="password"
                     className="grow"
                     onChange={(event) =>
-                      SetValues({ ...values, password: event.target.value })
+                      setValues({ ...values, password: event.target.value })
                     }
                   />
                 </label>
 
                 <button className="btn btn-primary flex-initial">Log in</button>
               </div>
-
-              <div className="flex flex-row gap-1 *:text-base">
-                <p className="">Don't have account?</p>
-
-                <Link href={{ pathname: "/register" }}>
-                  <p className="text-primary">Sign up</p>
-                </Link>
-              </div>
             </form>
+            <div className="flex flex-row gap-4 *:text-base">
+              <p className="">Don't have account?</p>
+
+              <Link href={{ pathname: "/register" }}>
+                <p className="text-primary">Sign up</p>
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="bg-primary border-primary  w-full h-full"></div>
+        {/* <div className="bg-primary w-full h-full"></div> */}
       </div>
     </div>
   );

@@ -42,8 +42,8 @@ export default function RegisterFunction() {
   return (
     <div className="max-w-screen-xl m-auto">
       <div className="main  container ">
-        <div className="bg-white w-full h-fullgrid grid-cols-2 ">
-          <div className="flex flex-col justify-center  gap-10 items-center">
+        <div className=" w-full h-fullgrid grid-cols-2 mt-5 ">
+          <div className=" bg-white flex flex-col justify-center  gap-10 items-center">
             <div>
               <img src="./logo.svg" alt="" />
             </div>
@@ -164,7 +164,7 @@ export default function RegisterFunction() {
             </div>
           </div>
 
-          <div className="blue bg-primary "></div>
+          {/* <div className=" bg-primary "></div> */}
         </div>
       </div>
     </div>
