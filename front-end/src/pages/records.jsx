@@ -4,8 +4,8 @@ export default function DashboardFunction() {
   return (
     <div className="max-w-screen-xl max-h-screen-xl bg-gray-100 ">
       <Header></Header>
-      <div className="max-w-screen-xl m-auto ">
-        <div className="record-item w-[250px] flex flex-col gap-6  bg-white border-gray-100 rounded-xl py-6 px-4">
+      <div className="max-w-screen-xl m-auto flex flex-row gap-5 ">
+        <div className="record-item w-[250px] flex flex-col gap-6 mt-7  bg-white border-gray-100 rounded-xl py-6 px-4">
           <div className="flex flex-col gap-6">
             <h1 className="text-2xl font-bold">Records</h1>
 
@@ -31,7 +31,7 @@ export default function DashboardFunction() {
           </label>
 
           {/* Type Section */}
-          <div className="flex flex-col flex-start gap-3">
+          <div className="flex flex-col flex-start gap-4">
             <h3 className="text-base font-bold">Types </h3>
             <ul>
               <li className="flex flex-row gap-2">
@@ -65,25 +65,64 @@ export default function DashboardFunction() {
           </div>
 
           {/* Category Section */}
-          <div className="category">
-            <div className="head">
+          <div className="category ">
+            <div className="head flex flex-row justify-between ">
               <h1>Category</h1>
-              <button>Clear</button>
+              <button className="text-base text-gray-800">Clear</button>
             </div>
+            <ul>{/* <li>Category compenent</li> */}</ul>
 
+            <div className="add-button flex flex-row justify-content">
+              <div className="flex flex-row gap-1">
+                {" "}
+                <img src="./plus.svg" alt="" className="+" />
+                <button>Add category</button>
+              </div>
+              <div className="arrow">
+                <img src="" alt="" />
+              </div>
+            </div>
+          </div>
+
+          {/* Amount range */}
+          <div className="flex flex-col gap-4">
+            <h1 className="text-lg font-bold">Amount Range</h1>
+
+            <div className=" w-full flex flex-row gap-4  *:h-12 *:rounded-2xl *:bg-gray-100 *:p-4">
+              <input type="number" name="" id="" />
+              <input type="number" name="" id="" />
+            </div>
             <ul>
-              <li></li>
+              <li data-content="●" className="step step-neutral">
+                0
+              </li>
+              <li data-content="●" className="step step-neutral">
+                1000
+              </li>
             </ul>
           </div>
         </div>
 
         <div className="record-list">
-          <div className="date-bar">
-            <div className="last30days"> </div>
-            <div className="filter"></div>
+          <div className="last30days border-dashed t-[120px] l-[]">
+            {" "}
+            Last 30 days
+            <div className=" "></div>
           </div>
 
-          <div className="today"></div>
+          <div className="filter flex flex-row flex-end  text-base gap-1 ">
+            <p>Newest first</p>
+            <img src="./arrow_drop_down.svg" alt="" />
+          </div>
+
+          <div className="Select-all w-[894px] px-8 py-3 my-5 bg-white rounded-2xl flex flex-row  justify-between">
+            <div className="flex flex-row gap-1">
+              <input type="checkbox" name="" id="" />
+              <p>Select All</p>
+            </div>
+            <div className="amount"> 50000 T </div>
+          </div>
+          <div className="today w-[894px] px-8 py-3 bg-white rounded-2xl flex flex-row  justify-between "></div>
           <div className="yesterday"></div>
         </div>
       </div>

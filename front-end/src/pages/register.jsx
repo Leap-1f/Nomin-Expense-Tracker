@@ -6,7 +6,7 @@ import { useRouter } from "next/router.js";
 
 export default function RegisterFunction() {
   const router = useRouter();
-  const API_ENDPOINT = "http://localhost:8080/";
+  // const API_ENDPOINT = "http://localhost:8080/";
 
   const [userData, setUserData] = useState();
 
@@ -15,7 +15,7 @@ export default function RegisterFunction() {
 
     console.log(userData);
     try {
-      const response = await fetch("http://localhost:8080/", {
+      const response = await fetch("http://localhost:8080/users/", {
         method: "POST",
         mode: "cors",
         headers: {
