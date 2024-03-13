@@ -31,11 +31,16 @@ export default function DashboardFunction() {
           </label>
 
           {/* Type Section */}
-          <div className="flex flex-col flex-start gap-4">
+          <div className="flex flex-col flex-start gap-4 ">
             <h3 className="text-base font-bold">Types </h3>
             <ul>
               <li className="flex flex-row gap-2">
-                <input type="radio" name="radio-9" className="radio" disabled />
+                <input
+                  type="radio"
+                  name="radio-9"
+                  className="radio size-4"
+                  enabled
+                />
 
                 <p className="text-sm text-secondary "> All</p>
               </li>
@@ -43,8 +48,8 @@ export default function DashboardFunction() {
                 <input
                   type="radio"
                   name="radio-9"
-                  className="radio"
-                  disabled
+                  className="radio size-4"
+                  enabled
                   checked
                 />
 
@@ -54,8 +59,8 @@ export default function DashboardFunction() {
                 <input
                   type="radio"
                   name="radio-9"
-                  className="radio"
-                  disabled
+                  className="radio size-4"
+                  enabled
                   checked
                 />
 
@@ -92,14 +97,19 @@ export default function DashboardFunction() {
               <input type="number" name="" id="" />
               <input type="number" name="" id="" />
             </div>
-            <ul>
-              <li data-content="●" className="step step-neutral">
-                0
-              </li>
-              <li data-content="●" className="step step-neutral">
-                1000
-              </li>
-            </ul>
+            <input
+              type="range"
+              min={0}
+              max="100"
+              value="25"
+              className="range"
+              step="25"
+            />
+            <div className="w-full flex justify-between text-xs px-2">
+              <span>0</span>
+
+              <span>1000</span>
+            </div>
           </div>
         </div>
 
