@@ -114,26 +114,51 @@ export default function DashboardFunction() {
         </div>
 
         <div className="record-list">
-          <div className="last30days border-dashed t-[120px] l-[]">
-            {" "}
-            Last 30 days
-            <div className=" "></div>
-          </div>
-
-          <div className="filter flex flex-row flex-end  text-base gap-1 ">
-            <p>Newest first</p>
-            <img src="./arrow_drop_down.svg" alt="" />
-          </div>
-
-          <div className="Select-all w-[894px] px-8 py-3 my-5 bg-white rounded-2xl flex flex-row  justify-between">
-            <div className="flex flex-row gap-1">
-              <input type="checkbox" name="" id="" />
-              <p>Select All</p>
+          <div className="flex flex-row justify-around mt-4">
+            <div className="last30days border-dashed t-[120px] l-[]">
+              {" "}
+              Last 30 days
+              <div className=" "></div>
             </div>
-            <div className="amount"> 50000 T </div>
+
+            <div className="filter flex flex-row flex-end  text-base gap-1 ">
+              <p>Newest first</p>
+              <img src="./arrow_drop_down.svg" alt="" />
+            </div>
           </div>
-          <div className="today w-[894px] px-8 py-3 bg-white rounded-2xl flex flex-row  justify-between "></div>
-          <div className="yesterday"></div>
+          <div className="w-[894px] mt-4 ">
+            <div className="Select-all w-full px-8 py-3 my-5 bg-white rounded-2xl flex flex-row  justify-between">
+              <div className="flex flex-row gap-1">
+                <input type="checkbox" name="" id="" />
+                <p>Select All</p>
+              </div>
+              <div className=" flex flex-row flex-end gap-1 text-base text-gray-400">
+                <p> ₮</p>
+                <div className="amount "> 50000 </div>
+              </div>
+            </div>
+            {/* today section */}
+            <div className="today flex flex-col gap-4">
+              <h1 className="text-lg font-bold">Today</h1>
+              <div className="today w-[894px] px-8 py-3 bg-white rounded-2xl flex flex-row  justify-between ">
+                <div className="flex flex-row gap-3">
+                  <input type="checkbox" name="" id="" />
+                  <img src="" alt="" />
+
+                  <div>
+                    <p className="text-base ">Lending & Renting</p>
+                    <p className="text-sm  text-gray-500">14:00</p>
+                  </div>
+                </div>
+                <div className=" flex flex-row flex-end gap-1 text-base text-green-400">
+                  <p> ₮</p>
+                  <div className="amount "> 50000 </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="yesterday"></div>
+          </div>
         </div>
       </div>
     </div>

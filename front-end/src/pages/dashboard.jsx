@@ -29,7 +29,10 @@ export default function DashboardFunction() {
 
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
-              <h1 className="income-amount text-4xl font-bold"> 1'200'000 T</h1>
+              <div className=" income-amount text-4xl font-bold  flex flex-row gap-1">
+                <h1 className=" "> - 1'200'000</h1>
+                <p>₮</p>
+              </div>
               <p className="text-lg text-slate-500">Your Income Amount</p>
             </div>
 
@@ -49,10 +52,11 @@ export default function DashboardFunction() {
 
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
-              <h1 className="income-amount text-4xl font-bold">
-                {" "}
-                - 1'200'000 T
-              </h1>
+              <div className=" income-amount text-4xl font-bold  flex flex-row gap-1">
+                <h1 className=" "> - 1'200'000</h1>
+                <p>₮</p>
+              </div>
+
               <p className="text-lg text-slate-500">Your Income Amount</p>
             </div>
 

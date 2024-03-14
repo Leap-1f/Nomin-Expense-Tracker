@@ -58,7 +58,7 @@ export const login = async (request, response) => {
       });
       return;
     }
-    const isValid = await bcryct.compare(password, data[0].password);
+    const isValid = await bcrypt.compare(password, data[0].password);
     if (isValid) {
       response.send({
         success: true,

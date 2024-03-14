@@ -15,7 +15,7 @@ export default function RegisterFunction() {
 
     console.log(userData);
     try {
-      const response = await fetch("http://localhost:8080/users/", {
+      const response = await fetch("http://localhost:8080/users", {
         method: "POST",
         mode: "cors",
         headers: {

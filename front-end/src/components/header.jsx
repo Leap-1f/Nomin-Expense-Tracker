@@ -1,7 +1,7 @@
 import Link from "next/link";
 export function Header() {
   return (
-    <div className="max-w-screen-xl m-auto h-10 bg-white flex flex-row py-4 px-[120px] justify-between items-center">
+    <div className="max-w-screen-xl m-auto h-full bg-white flex flex-row py-4 px-[120px] justify-between items-center">
       <div className="flex flex-row gap-6 items-center">
         <Link href={{ pathname: "/index" }}>
           <img className="7" src="./Vector.svg" alt="" />
