@@ -27,6 +27,9 @@ export default function Home() {
           <Link href={{ pathname: "/records" }}>
             <li>Records</li>
           </Link>
+          <Link href={{ pathname: "/modal-test" }}>
+            <li>Modal</li>
+          </Link>
         </ul>
       </div>
     </div>

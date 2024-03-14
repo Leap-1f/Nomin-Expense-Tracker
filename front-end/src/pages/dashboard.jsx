@@ -7,7 +7,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function DashboardFunction() {
   return (
-    <div className="max-w-screen-xl max-h-screen-xl bg-gray-100 ">
+    <div className="max-w-screen-xl  mx-auto bg-gray-100 ">
       <Header></Header>
 
       <div className="max-w-screen-xl mx-[120px] my-6 grid grid-cols-3 gap-5 ">
