@@ -13,7 +13,6 @@ export default function RegisterFunction() {
   const createData = async (event) => {
     event.preventDefault();
 
-    console.log(userData);
     try {
       const response = await fetch("http://localhost:8080/users", {
         method: "POST",
@@ -25,6 +24,7 @@ export default function RegisterFunction() {
         body: JSON.stringify({ ...userData }),
       });
       const responseData = await response.json();
+      console.log(userData);
       setUserData(responseData);
       router.push("/steps");
     } catch (error) {

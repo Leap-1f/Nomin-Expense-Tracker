@@ -4,7 +4,7 @@ export function Modal() {
     <div className="max-w-screen  m-auto p-auto bg-gray-200 flex flex-col justify-center items-center">
       <div className=" w-[792px] h-[512px] rounded-xl  bg-white flex flex-col ">
         <div className="flex flex-row justify-between px-6 py-5">
-          <h1>Add Record</h1>
+          <h1 className="text-lg font-bold">Add Record</h1>
           <img src="./X.svg" alt="" />
         </div>
         <div className="divider"></div>
