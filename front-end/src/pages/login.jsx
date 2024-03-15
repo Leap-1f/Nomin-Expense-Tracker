@@ -13,25 +13,24 @@ export default function LoginFunction() {
 
   // const usenavigate = useNavigate();
 
-  useEffect(() => {
-    sessionStorage.clear();
-  }, []);
+  // useEffect(() => {
+  //   sessionStorage.clear();
+  // }, []);
 
   const handleInput = async (event) => {
     event.preventDefault();
     setValues;
-    console.log(values);
 
     // let inputobj = { email: email, password: password };
     try {
-      const response = await fetch("http://localhost:8080/", {
+      const response = await fetch("http://localhost:8080/users", {
         method: "POST",
         mode: "cors",
         headers: {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values }),
       });
       const responseData = await response.json();
       if (object.keys(responseData).length === 0) {

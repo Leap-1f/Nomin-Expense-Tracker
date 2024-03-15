@@ -1,4 +1,4 @@
-import { Header } from "../components/Header";
+import { HeaderBar } from "../components/Header";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
@@ -7,10 +7,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function DashboardFunction() {
   return (
-    <div className="max-w-screen-xl  mx-auto bg-gray-100 ">
-      <Header></Header>
+    <div className="max-w-screen mx-auto bg-gray-100 ">
+      <HeaderBar></HeaderBar>
 
-      <div className="max-w-screen-xl mx-[120px] my-6 grid grid-cols-3 gap-5 ">
+      <div className="max-w-screen-xl m-auto  px-[120px] my-6 grid grid-cols-3 gap-5 ">
         {/* blue-card */}
         <div className="card-blue  rounded-[18px]">
           <img
@@ -69,15 +69,100 @@ export default function DashboardFunction() {
       </div>
 
       {/* Chart Data */}
-      <div className="chart-data grid grid-cols-2 gap-6">
+      <div className="chart-data max-w-screen-xl m-auto   grid grid-cols-2 gap-6">
         <div className="income-graph">
           <h3 className="text-base font-bold py-6 px-4">Income - Expense</h3>
           <div className="py-6 px-8">Chart</div>
         </div>
-        <div className="expense-chart"></div>
+        <div className="expense-chart">{/* <Doughnut data={} /> */}</div>
       </div>
 
-      <div className="last-record">{/* <Doughnut data={} /> */}</div>
+      {/* Last Record */}
+      <div className="last-record max-w-screen-xl m-auto  rounded-md px-6 py-6 bg-white">
+        <div className="today flex flex-col gap-1">
+          <h1 className="text-lg font-bold">Last Records</h1>
+          <div className="divider"></div>
+          <ul className="flex flex-col gap-1">
+            <li className="today px-8 py-2 bg-white rounded-xl  border-gray-200 flex flex-row  justify-between ">
+              <div className="flex flex-row gap-3 items-center">
+                <input className="size-6 " type="checkbox" name="" id="" />
+
+                <div className="rounded-full size-10 bg-primary flex justify-center items-center">
+                  <img src="./House.svg" alt="" />
+                </div>
+
+                <div>
+                  <p className="text-base ">Lending & Renting</p>
+                  <p className="text-sm  text-gray-500">3 hours ago</p>
+                </div>
+              </div>
+              <div className=" flex flex-row flex-end gap-1 text-base text-green-400">
+                <p> ₮</p>
+                <div className="amount "> 35000 </div>
+              </div>
+            </li>
+            <div className="divider"></div>
+
+            <li className="today px-8 py-3 bg-white rounded-xl  border-gray-200 flex flex-row  justify-between ">
+              <div className="flex flex-row gap-3 items-center">
+                <input className="size-6 " type="checkbox" name="" id="" />
+
+                <div className="rounded-full size-10 bg-red-600 flex justify-center items-center">
+                  <img src="./food.svg" alt="" />
+                </div>
+
+                <div>
+                  <p className="text-base ">Food & Drinks</p>
+                  <p className="text-sm  text-gray-500">3 hours ago</p>
+                </div>
+              </div>
+              <div className=" flex flex-row flex-end gap-1 text-base text-yellow-400">
+                <p> ₮</p>
+                <div className="amount "> 25000 </div>
+              </div>
+            </li>
+
+            <div className="divider"></div>
+            <li className="today px-8 py-3 bg-white rounded-xl  border-gray-200 flex flex-row  justify-between ">
+              <div className="flex flex-row gap-3 items-center">
+                <input className="size-6 " type="checkbox" name="" id="" />
+
+                <div className="rounded-full size-10 bg-red-600 flex justify-center items-center">
+                  <img src="./food.svg" alt="" />
+                </div>
+
+                <div>
+                  <p className="text-base ">Food & Drinks</p>
+                  <p className="text-sm  text-gray-500">3 hours ago</p>
+                </div>
+              </div>
+              <div className=" flex flex-row flex-end gap-1 text-base text-yellow-400">
+                <p> ₮</p>
+                <div className="amount "> 25000 </div>
+              </div>
+            </li>
+            <div className="divider"></div>
+            <li className="today px-8 py-3 bg-white rounded-xl  border-gray-200 flex flex-row  justify-between ">
+              <div className="flex flex-row gap-3 items-center">
+                <input className="size-6 " type="checkbox" name="" id="" />
+
+                <div className="rounded-full size-10 bg-red-600 flex justify-center items-center">
+                  <img src="./food.svg" alt="" />
+                </div>
+
+                <div>
+                  <p className="text-base ">Food & Drinks</p>
+                  <p className="text-sm  text-gray-500">3 hours ago</p>
+                </div>
+              </div>
+              <div className=" flex flex-row flex-end gap-1 text-base text-yellow-400">
+                <p> ₮</p>
+                <div className="amount "> 25000 </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }

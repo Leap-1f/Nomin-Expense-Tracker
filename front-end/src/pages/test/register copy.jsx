@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4, v4 } from "uuid";
-import { SignupSchema } from "../validations/userValidation.js";
+import { SignupSchema } from "../../validations/userValidation.js";
 import { useRouter } from "next/router.js";
 import { Formik } from "formik";
 

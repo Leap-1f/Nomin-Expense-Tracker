@@ -1,5 +1,11 @@
 import Link from "next/link";
-export function Header() {
+
+import { useContext } from "react";
+import { Context } from "./layout/Context";
+
+export function HeaderBar() {
+  const { handleOpenModal } = useContext(Context);
+
   return (
     <div className="max-w-screen  mx-0 h-full bg-white flex flex-row py-4 px-[120px] justify-between items-center">
       <div className="flex flex-row gap-6 items-center">
@@ -16,7 +22,10 @@ export function Header() {
         </Link>
       </div>
       <div className="flex flex-row items-center gap-6">
-        <button className="text-base text-white bg-primary rounded-3xl px-3 py-0">
+        <button
+          onClick={handleOpenModal}
+          className="text-base text-white bg-primary rounded-3xl px-3 py-0"
+        >
           + Record
         </button>
 

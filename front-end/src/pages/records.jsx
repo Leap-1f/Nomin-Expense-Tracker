@@ -1,8 +1,13 @@
-import { Header } from "../components/Header";
+import { HeaderBar } from "../components/Header";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function DashboardFunction() {
   const [openModal, setOpenModal] = useState(false);
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState(new Date());
+  const [toggle, setToggle] = useState("expense");
 
   const handleOpanModal = () => {
     setOpenModal(true);
@@ -12,10 +17,14 @@ export default function DashboardFunction() {
     setOpenModal(false);
   };
 
+  const handleToggle = () => {
+    setToggle("income");
+  };
+
   return (
     <>
       <div className="max-w-screen-xl mx-auto  bg-gray-100 ">
-        <Header></Header>
+        <HeaderBar></HeaderBar>
         <div className="max-w-screen px-[120px]  my-0 py-4 flex flex-row gap-8  justify-center  ">
           <div className="record-item w-[250px] flex flex-col gap-6 mt-7  bg-white border-gray-100 rounded-xl py-6 px-4">
             <div className="flex flex-col gap-6">
@@ -156,8 +165,8 @@ export default function DashboardFunction() {
               <h3 className="text-base font-bold">Amount Range</h3>
 
               <div className="grid grid-cols-2 gap-4  *:h-12 *:rounded-2xl *:bg-gray-100 *:p-4">
-                <input type="number" name="" id="" />
-                <input type="number" name="" id="" />
+                <input type="number" name="" id="" placeholder="0" />
+                <input type="number" name="" id="" placeholder="1000" />
               </div>
               <input
                 type="range"
@@ -423,13 +432,20 @@ export default function DashboardFunction() {
                 {/* Column-1 */}
                 <div className=" w-full flex  flex-col px-6 pt-4  pb-6 gap-5">
                   <div className="buttons  flex flex-row ">
-                    <button className="text-white px-4 text-base rounded-3xl bg-primary ">
+                    <div className=" w-[300px] justify-center px-4 text-base absolute rounded-3xl  bg-gray-200 "></div>
+                    <button
+                      onClick={handleToggle}
+                      name="expense"
+                      className="text-black px-4 text-base w-[50%] z-10  relative rounded-3xl bg-gray-200 hover:bg-primary hover:text-white"
+                    >
                       Expense
                     </button>
-                    <button className="text-white px-4 text-base  bg-gray-400 ">
-                      {" "}
-                    </button>
-                    <button className="text-white px-4 text-base rounded-3xl bg-gray-400 ">
+
+                    <button
+                      onClick={handleToggle}
+                      name="income"
+                      className="text-white px-4 text-base w-[50%] z-10 relative rounded-3xl bg-gray-200 hover:bg-green-400 hover:text-white "
+                    >
                       Income
                     </button>
                   </div>
@@ -454,27 +470,39 @@ export default function DashboardFunction() {
                     <div className="date grid grid-cols-2 gap-1">
                       <div className="flex flex-col gap-1">
                         <p>Date</p>
-                        <select className="select select-bordered w-fit max-w-xs">
-                          <option disabled selected>
-                            Find date
-                          </option>
-                          <option>1</option>
-                          <option>2</option>
-                        </select>
+
+                        {/* <DatePicker
+                          className="select select-bordered w-fit max-w-xs"
+                          selected={date}
+                          onChange={(date) => setDate(date)}
+                        ></DatePicker> */}
+
+                        <input
+                          className="select select-bordered w-fit max-w-xs"
+                          type="date"
+                          name=""
+                          id=""
+                          onChange={(date) => setDate(date)}
+                          min="2024-01-01"
+                          max="2024-12-31"
+                        />
                       </div>
                       <div className="flex flex-col gap-1">
-                        <p>Date</p>
-                        <select className="select select-bordered w-full max-w-xs">
-                          <option disabled selected>
-                            Find time
-                          </option>
-                          <option>1</option>
-                          <option>2</option>
-                        </select>
+                        <p>Time</p>
+                        <input
+                          className="select select-bordered w-fit max-w-xs"
+                          onChange={(time) => setTime(time)}
+                          type="time"
+                          name=""
+                          id=""
+                        />
                       </div>
                     </div>
                   </div>
-                  <button className="text-white text-base rounded-3xl bg-primary">
+                  <button
+                    onClick={handleCloseModal}
+                    className="text-white text-base rounded-3xl bg-primary"
+                  >
                     Add Record
                   </button>
                 </div>
