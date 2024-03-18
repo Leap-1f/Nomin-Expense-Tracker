@@ -3,12 +3,11 @@ import { useState, useEffect } from "react";
 import { v4 as uuidv4, v4 } from "uuid";
 import { SignupSchema } from "../validations/userValidation.js";
 import { useRouter } from "next/router.js";
-import { Formik } from "formik";
+import { Formik, Form, Field } from "formik";
 
 export default function RegisterFunction() {
   const router = useRouter();
   // const API_ENDPOINT = "http://localhost:8080/";
-
   const [userData, setUserData] = useState();
 
   const createData = async (event) => {
@@ -56,7 +55,20 @@ export default function RegisterFunction() {
               </p>
             </div>
             <div className="flex flex-col gap-4 ">
-              <form className="flex flex-col gap-4" onSubmit={createData}>
+              <Formik
+                initialValues={{
+                  name: "",
+                  email: "",
+                  password: "",
+                  confirmPassword: "",
+                }}
+                onSubmit={async (values) => {
+                  await new Promise((error) => setTimeout(error, 500));
+                  alert(JSON.stringify(values, null, 2));
+                }}
+              ></Formik>
+              ;
+              {/* <form className="flex flex-col gap-4" onSubmit={createData}>
                 <label className="input input-bordered flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +166,7 @@ export default function RegisterFunction() {
                   Sign up
                 </button>
                 {/* </Link> */}
-              </form>
+              </form> */}
             </div>
 
             <div className="flex flex-row gap-1 *:text-base">
