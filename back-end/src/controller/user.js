@@ -14,7 +14,7 @@ export const postUser = async (request, response) => {
 
   try {
     const result =
-      await sql`INSERT INTO users(name,email,password, currency_type, balance) VALUES(${name},${email},${password},${currencyType}, ${balance} ) RETURNING *`;
+      await sql`INSERT INTO users(name, email, password, currency_type, balance ) VALUES(${name}, ${email}, ${password}, ${currencyType}, ${balance}) RETURNING *`;
     response.send(result);
   } catch (err) {
     console.error(err);
@@ -49,7 +49,7 @@ export const createTable = async (request, response) => {
 export const login = async (request, response) => {
   try {
     const { email, password } = request.body;
-    const data = await sql`SELECT * FROM users where email=${email}`;
+    const data = await sql`SELECT * FROM users WHERE email=${email}`;
     console.log(data, "data");
     if (data.length === 0) {
       response.send({

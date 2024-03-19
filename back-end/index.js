@@ -1,5 +1,5 @@
 import express from "express";
-import { user } from "./src/router/user.js";
+import { users} from "./src/router/user.js";
 import cors from "cors";
 
 // import { user } from "./mock/users.js";
@@ -13,7 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/users", user);
+app.use("/users", users);
 
 // app.get("/", (request, response) => {
 //   response.send("huselt irlee");

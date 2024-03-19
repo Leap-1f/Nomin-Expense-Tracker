@@ -7,10 +7,10 @@ import {
   login,
 } from "../controller/user.js";
 
-const user = Router();
+const users = Router();
 
-user.route("/signup").get(getAllUsers).post(postUser);
-user.route("/login").post(login);
-user.route("/user").post(createTable);
+users.route("/signup").get(getAllUsers).post(postUser);
+users.route("/login").post(login);
+users.route("/user").post(createTable);
 
-export { user };
+export { users };

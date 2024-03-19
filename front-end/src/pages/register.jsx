@@ -6,7 +6,14 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 export default function RegisterFunction() {
   const router = useRouter();
-  // const API_ENDPOINT = "http://localhost:8080/";
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const API_ENDPOINT = "http://localhost:8080/users/signup";
   // const [userData, setUserData] = useState();
 
   // const handleSubmit = async (event) => {
@@ -63,19 +70,24 @@ export default function RegisterFunction() {
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={async (values) => {
-                  console.log(values);
+                  // console.log(values);
                   try {
-                    const res = await fetch("http://localhost:8080/users", {
-                      headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                      },
-                      method: "POST",
-                      body: JSON.stringify(values),
-                    });
-                    const response = await res.json();
-                    console.log(response);
+                    setUserData(values);
                     router.push("/steps");
+                    // const res = await fetch(
+                    //   "http://localhost:8080/users/signup",
+                    //   {
+                    //     headers: {
+                    //       Accept: "application/json",
+                    //       "Content-Type": "application/json",
+                    //     },
+                    //     method: "POST",
+                    //     mode: "cors",
+                    //     body: JSON.stringify(values),
+                    //   }
+                    // );
+                    // const response = await res.json();
+                    // console.log(response);
                   } catch (err) {
                     console.log(err);
                   }
@@ -99,6 +111,7 @@ export default function RegisterFunction() {
                     ></Field>
                     <ErrorMessage name="name" />
                   </label>
+
                   <br />
                   <label className="input input-bordered flex items-center gap-2">
                     <svg
