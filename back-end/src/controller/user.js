@@ -10,11 +10,11 @@ export const getAllUsers = async (request, response) => {
   }
 };
 export const postUser = async (request, response) => {
-  const { name, password, email, currencyType, balance } = request.body;
+  const { name, password, email, currency_type, balance } = request.body;
 
   try {
     const result =
-      await sql`INSERT INTO users(name, email, password, currency_type, balance ) VALUES(${name}, ${email}, ${password}, ${currencyType}, ${balance}) RETURNING *`;
+      await sql`INSERT INTO users(name, email, password, currency_type, balance ) VALUES(${name}, ${email}, ${password}, ${currency_type}, ${balance}) RETURNING *`;
     response.send(result);
   } catch (err) {
     console.error(err);

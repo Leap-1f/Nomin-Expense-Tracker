@@ -15,7 +15,7 @@ export const postCategories = async (request, response) => {
     const hashedPassword = await bcryct.hash(password, salt);
     const data = await sql`SELECT * FROM users`;
     const newUser =
-      await sql`INSERT INTO users(email, name, password, currency_type, amount) VALUES(${email}, ${name}, ${hashedPassword}, ${currencyType}, ${amount}) RETURNING *`;
+      await sql`INSERT INTO users(email, name, password, currency_type, balance) VALUES(${email}, ${name}, ${hashedPassword}, ${currencyType}, ${amount}) RETURNING *`;
     data.push(newUser);
     response.send({ success: true, statusCode: 201 });
   } catch (err) {

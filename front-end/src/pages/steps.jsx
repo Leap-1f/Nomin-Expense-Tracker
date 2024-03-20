@@ -6,7 +6,7 @@ export default function StepsFunction() {
   const router = useRouter();
   const [steps, setSteps] = useState(1);
   const [currency, setCurrency] = useState("MNT");
-  const [amount, setAmount] = useState("");
+  const [balance, setBalance] = useState("");
   const selectRef = useRef(null);
   const [userData, setUserData] = useState({
     name: "",
@@ -24,8 +24,8 @@ export default function StepsFunction() {
       try {
         const userSavedData = {
           ...userData,
-          currencyType: currency,
-          balance: amount,
+          currency_type: currency,
+          balance: balance,
         };
         const res = await fetch("http://localhost:8080/users/signup", {
           headers: {
@@ -42,6 +42,7 @@ export default function StepsFunction() {
 
         if (!res.ok) throw new Error("Failed to create new user");
         const response = await res.json();
+        console.log();
         setSteps(3);
         router.push("/dashboard");
       } catch (error) {
@@ -60,21 +61,19 @@ export default function StepsFunction() {
             ref={selectRef}
             className="select w-full  border-gray-800"
           >
-            <option className="text-secondary">MNT - Mongolian Tugrik</option>
-            <option className="text-secondary">
+            <option className="text-secondary" value="mnt">
+              MNT - Mongolian Tugrik
+            </option>
+            <option className="text-secondary" value="usd">
               USD - United States Dollar
             </option>
-            {/* <option className="text-secondary">
-                CNY - Chinese Yuan Renminbi
-              </option>
-              <option className="text-secondary">RUB - Russian Ruble</option> */}
           </select>
         );
       case 2:
         return (
           <input
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            value={balance}
+            onChange={(e) => setBalance(e.target.value)}
             placeholder="Amount"
             type="text"
             className="w-[352px]"
@@ -105,8 +104,6 @@ export default function StepsFunction() {
     }
   };
 
-  const { title, text } = getTitleAndText();
-
   return (
     <div className="max-w-screen h-screen  ">
       <div className="flex flex-col justify-center items-center gap-[141px] ">
@@ -116,8 +113,12 @@ export default function StepsFunction() {
 
           <ul className="steps steps-vertical lg:steps-horizontal  ">
             <li className="step step-primary px-5">Currency</li>
-            <li className="step ">Balance</li>
-            <li className="step ">Finish</li>
+            <li className={`step ${steps === 1 ? "" : "step-primary"}`}>
+              Balance
+            </li>
+            <li className={`step ${steps === 3 ? "step-primary" : ""}`}>
+              Finish
+            </li>
           </ul>
         </div>
 
@@ -133,26 +134,45 @@ export default function StepsFunction() {
               {/* <h2 className="text-2xl font-bold">Select base currency </h2> */}
             </div>
 
-            <select className="select w-full  border-gray-800">
+            {/* <select className="select w-full  border-gray-800">
               <option className="text-secondary">MNT - Mongolian Tugrik</option>
               <option className="text-secondary">
                 USD - United States Dollar
-              </option>
-              {/* <option className="text-secondary">
+              </option> */}
+            {/* <option className="text-secondary">
                 CNY - Chinese Yuan Renminbi
               </option>
               <option className="text-secondary">RUB - Russian Ruble</option> */}
-            </select>
+            {/* </select> */}
 
-            <p className="text-xs text-accent">
+            <div className=" flex justify-center text-2xl text-black font-bold">
+              {getTitleAndText().title}
+            </div>
+
+            <div className="mt-6">
+              <div className="text-xs text-accent">
+                {renderSteps()}
+                <p className=" mt-6 text-xs text-accent">
+                  {getTitleAndText().text}
+                </p>
+              </div>
+            </div>
+            {/* <p className="text-xs text-accent">
               Your base currency should be the one you use most often. All{" "}
               <br></br>
               transaction in other currencies will be calculated based on this
               one
-            </p>
+            </p> */}
           </div>
 
-          <button className="btn btn-primary flex-initial">Confirm</button>
+          <button
+            onClick={changeSteps}
+            className="btn btn-primary flex-initial"
+          >
+            {steps === 1 && `Confirm `}
+            {steps === 2 && `Confirm `}
+            {steps === 3 && `Go to Dashboard`}
+          </button>
         </div>
       </div>
     </div>
