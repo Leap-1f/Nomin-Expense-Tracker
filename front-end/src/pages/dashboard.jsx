@@ -1,11 +1,48 @@
+import { BarChart } from "@/components/Barchart";
 import { HeaderBar } from "../components/Header";
+import { BarChartData } from "./test/Data";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-
-ChartJS.register(ArcElement, Tooltip, Legend);
+import { useState } from "react";
+import { DoughnutChart } from "@/components/Piechart";
 
 export default function DashboardFunction() {
+  const [chartData, setChartData] = useState({
+    labels: BarChartData.map((data) => data.month),
+    datasets: [
+      {
+        label: "Income",
+        data: BarChartData.map((data) => data.income),
+        backgroundColor: "#84CC16",
+        borderRadius: [10],
+      },
+      {
+        label: "Expense",
+        data: BarChartData.map((data) => data.expense),
+        backgroundColor: "#F97316",
+        borderRadius: [10],
+      },
+    ],
+  });
+
+  const [pieChartData, setPieChartData] = useState({
+    labels: ["Bills", " Food", "Shopping", "Insurance", "Clothing"],
+    datasets: [
+      {
+        label: "Poll",
+        data: [2000000, 1800000, 1200000, 500000, 500000],
+        backgroundColor: [
+          "#E74694",
+          "#1C64F2",
+          "#F2901C",
+          "#16BDCA",
+          "#FDBA8C",
+        ],
+      },
+    ],
+  });
+
   return (
     <div className="max-w-screen mx-auto bg-gray-100 ">
       <HeaderBar></HeaderBar>
@@ -70,15 +107,31 @@ export default function DashboardFunction() {
 
       {/* Chart Data */}
       <div className="chart-data max-w-screen-xl m-auto   grid grid-cols-2 gap-6">
-        <div className="income-graph">
-          <h3 className="text-base font-bold py-6 px-4">Income - Expense</h3>
-          <div className="py-6 px-8">Chart</div>
+        <div className="income-graph bg-white rounded-lg ">
+          <h3 className="text-base font-bold py-3 px-4">Income - Expense</h3>
+          <div className="py-3 px-8">
+            <BarChart chartDataTest={chartData} />
+          </div>
         </div>
-        <div className="expense-chart">{/* <Doughnut data={} /> */}</div>
+        <div className="expense-chart  bg-white rounded-lg  ">
+          <div className="flex flex-row justify-between">
+            <h3 className="text-base font-bold py-3 px-4">Income - Expense</h3>
+            <p className="text-base font-bold py-3 px-4 text-gray-500">
+              Jun 1 - Nov 30
+            </p>
+          </div>
+          <div className="flex flex-row gap-[47px]">
+            <div className="size-fit">
+              <DoughnutChart pieData={pieChartData} />
+            </div>
+
+            <div></div>
+          </div>
+        </div>
       </div>
 
       {/* Last Record */}
-      <div className="last-record max-w-screen-xl m-auto  rounded-md px-6 py-6 bg-white">
+      <div className="last-record max-w-screen-xl m-auto mt-5 rounded-md px-6 py-6 bg-white">
         <div className="today flex flex-col gap-1">
           <h1 className="text-lg font-bold">Last Records</h1>
           <div className="divider"></div>

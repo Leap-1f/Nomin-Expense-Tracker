@@ -12,21 +12,21 @@ export default function Home() {
           <Link href={{ pathname: "/register" }}>
             <li>Register</li>
           </Link>
-          <Link href={{ pathname: "/loading" }}>
+          {/* <Link href={{ pathname: "/loading" }}>
             <li>Loader</li>
-          </Link>
+          </Link> */}
 
           <Link href={{ pathname: "/dashboard" }}>
             <li>Dashboard</li>
           </Link>
 
-          <Link href={{ pathname: "/steps" }}>
+          {/* <Link href={{ pathname: "/steps" }}>
             <li>Step</li>
-          </Link>
+          </Link> */}
 
-          <Link href={{ pathname: "/records" }}>
+          {/* <Link href={{ pathname: "/records" }}>
             <li>Records</li>
-          </Link>
+          </Link> */}
           {/* <Link href={{ pathname: "/modal-test" }}>
             <li>Modal</li>
           </Link> */}
