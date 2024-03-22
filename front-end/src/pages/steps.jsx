@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/router";
-import { Input } from "postcss";
+// import { useData } from "@components/layout/Context";
 
 export default function StepsFunction() {
   const router = useRouter();
@@ -14,6 +14,7 @@ export default function StepsFunction() {
     password: "",
     confirmPassword: "",
   });
+  // const { userData, setUserData } = useData();
 
   const changeSteps = async () => {
     if (steps === 1) {
@@ -42,7 +43,7 @@ export default function StepsFunction() {
 
         if (!res.ok) throw new Error("Failed to create new user");
         const response = await res.json();
-        console.log();
+        console.log(response);
         setSteps(3);
         router.push("/dashboard");
       } catch (error) {
@@ -133,17 +134,6 @@ export default function StepsFunction() {
 
               {/* <h2 className="text-2xl font-bold">Select base currency </h2> */}
             </div>
-
-            {/* <select className="select w-full  border-gray-800">
-              <option className="text-secondary">MNT - Mongolian Tugrik</option>
-              <option className="text-secondary">
-                USD - United States Dollar
-              </option> */}
-            {/* <option className="text-secondary">
-                CNY - Chinese Yuan Renminbi
-              </option>
-              <option className="text-secondary">RUB - Russian Ruble</option> */}
-            {/* </select> */}
 
             <div className=" flex justify-center text-2xl text-black font-bold">
               {getTitleAndText().title}

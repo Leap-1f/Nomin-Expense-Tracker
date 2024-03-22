@@ -3,9 +3,11 @@ import { useState, useEffect } from "react";
 import { SignupSchema } from "../validations/userValidation.js";
 import { useRouter } from "next/router.js";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+// import { useData } from "@components/layout/Context";
 
 export default function RegisterFunction() {
   const router = useRouter();
+  // const { setUserData } = useData;
   const [userData, setUserData] = useState({
     name: "",
     email: "",
