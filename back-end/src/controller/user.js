@@ -25,7 +25,7 @@ export const postUser = async (request, response) => {
   const users = await sql`SELECT * FROM users`;
   users.push({ name: name, password: hashedPassword });
   console.log(users);
-  response.send("User created succesfully");
+  // response.send("User created succesfully");
 };
 
 export const createTable = async (request, response) => {
