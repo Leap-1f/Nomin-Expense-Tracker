@@ -1,19 +1,13 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { SignupSchema } from "../validations/userValidation.js";
 import { useRouter } from "next/router.js";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-// import { useData } from "@components/layout/Context";
+import { Context } from "../components/layout/Context.jsx";
 
 export default function RegisterFunction() {
   const router = useRouter();
-  // const { setUserData } = useData;
-  const [userData, setUserData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const { userData, setUserData } = useContext(Context);
 
   const API_ENDPOINT = "http://localhost:8080/users/signup";
   // const [userData, setUserData] = useState();
@@ -40,13 +34,6 @@ export default function RegisterFunction() {
   //   }
   // };
 
-  // const addData = async (event) => {
-  //   event.preventDefault();
-  //   // const isValid = await SignupSchema.isValid(userData);
-  //   console.log(userData + "sefkh");
-  //   // console.log(isValid);
-  //   createData();
-  // };
   return (
     <div className="max-w-screen-xl m-auto">
       <div className="main  container ">
@@ -72,7 +59,6 @@ export default function RegisterFunction() {
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={async (values) => {
-                  // console.log(values);
                   try {
                     setUserData(values);
                     router.push("/steps");
@@ -183,7 +169,7 @@ export default function RegisterFunction() {
                   </label>
                   <br />
                   {/* <Link href={{ pathname: "/steps" }}> */}
-                  <button type="submit" className=" btn  btn-primary ">
+                  <button type="submit" className=" btn w-full  btn-primary ">
                     Sign up
                   </button>
                   {/* </Link> */}

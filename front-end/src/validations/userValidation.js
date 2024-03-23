@@ -17,3 +17,15 @@ export const SignupSchema = yup.object().shape({
     .oneOf([yup.ref("password"), null], "Password must match")
     .required("Confirm password is required"),
 });
+
+export const LoginSchema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup.string().required("Password is required"),
+});
+
+export const AmountSchema = yup.object().shape({
+  amount: yup
+    .number()
+    .typeError("Amount must be a number")
+    .required("Amount is required *"),
+});

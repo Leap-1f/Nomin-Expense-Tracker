@@ -11,19 +11,19 @@ export const getAllUsers = async (request, response) => {
 };
 export const postUser = async (request, response) => {
   const { name, password, email, currency_type, balance } = request.body;
-
+  const salt = bcrypt.genSaltSync(1);
+  const hashedPassword = await bcrypt.hash(password, salt);
+  const users = await sql`SELECT * FROM users`;
+  // users.push({ name: name, password: hashedPassword });
   try {
     const result =
-      await sql`INSERT INTO users(name, email, password, currency_type, balance ) VALUES(${name}, ${email}, ${password}, ${currency_type}, ${balance}) RETURNING *`;
+      await sql`INSERT INTO users(name, email, password, currency_type, balance ) VALUES(${name}, ${email}, ${hashedPassword}, ${currency_type}, ${balance}) RETURNING *`;
     response.send(result);
   } catch (err) {
     console.error(err);
     response.status(400).json({ message: "Failed to add user" });
   }
-  const salt = bcrypt.genSaltSync(1);
-  const hashedPassword = await bcrypt.hash(password, salt);
-  const users = await sql`SELECT * FROM users`;
-  users.push({ name: name, password: hashedPassword });
+
   console.log(users);
   // response.send("User created succesfully");
 };
@@ -53,7 +53,7 @@ export const login = async (request, response) => {
     console.log(data, "data");
     if (data.length === 0) {
       response.send({
-        message: "nodata",
+        message: "User not found",
         data: null,
       });
       return;
@@ -66,8 +66,8 @@ export const login = async (request, response) => {
         user: { userId: data.id, email: data.email, password: data.password },
       });
     } else {
-      response.send({
-        message: "failed",
+      response.status(401).send({
+        message: "Invalid email or password",
         data: null,
       });
     }

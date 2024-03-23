@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useRouter } from "next/router";
-// import { useData } from "@components/layout/Context";
+import { Context } from "../components/layout/Context.jsx";
 
 export default function StepsFunction() {
   const router = useRouter();
@@ -8,13 +8,14 @@ export default function StepsFunction() {
   const [currency, setCurrency] = useState("MNT");
   const [balance, setBalance] = useState("");
   const selectRef = useRef(null);
-  const [userData, setUserData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-  // const { userData, setUserData } = useData();
+  // const [userData, setUserData] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  //   confirmPassword: "",
+  // });
+
+  const { userData, setUserData } = useContext(Context);
 
   const changeSteps = async () => {
     if (steps === 1) {

@@ -12,7 +12,7 @@ export const ArticleProvider = ({ children }) => {
 
   const [openModal, setOpenModal] = useState(false);
 
-  const handleOpanModal = () => {
+  const handleOpenModal = () => {
     setOpenModal(true);
   };
 
@@ -23,7 +23,7 @@ export const ArticleProvider = ({ children }) => {
     <Context.Provider
       value={{
         handleCloseModal,
-        handleOpanModal,
+        handleOpenModal,
         userData,
         setUserData,
       }}
@@ -32,4 +32,3 @@ export const ArticleProvider = ({ children }) => {
     </Context.Provider>
   );
 };
-export const useData = () => useContext(Context);
