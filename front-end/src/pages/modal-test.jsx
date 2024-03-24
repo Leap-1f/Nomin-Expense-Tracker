@@ -1,5 +1,5 @@
 import { Modal } from "../components/Modal";
-import { Context } from "./layout/Context";
+import { Context } from "../components/layout/Context";
 import { useContext } from "react";
 
 export default function Modaltest() {
