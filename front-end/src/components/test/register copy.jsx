@@ -15,15 +15,18 @@ export default function RegisterFunction() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/users", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...userData }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_ENDPOINT}/users`,
+        {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...userData }),
+        }
+      );
       const responseData = await response.json();
       console.log(userData);
       setUserData(responseData);

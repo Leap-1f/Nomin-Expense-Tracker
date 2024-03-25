@@ -25,15 +25,18 @@ export default function LoginFunction() {
 
     // let inputobj = { email: email, password: password };
     try {
-      const response = await fetch("http://localhost:8080/users/login", {
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        mode: "cors",
-        body: JSON.stringify({ ...values }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_ENDPOINT}/users/login`,
+        {
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          mode: "cors",
+          body: JSON.stringify({ ...values }),
+        }
+      );
       const responseData = await response.json();
       if (!responseData.ok) {
         toast.error("Login failed, invalid email and password");
@@ -48,7 +51,7 @@ export default function LoginFunction() {
       console.error("Error creating data:", error);
     }
   };
-
+  console.log(process.env.NEXT_PUBLIC_ENDPOINT);
   return (
     <div className="max-w-screen-xl h-screen  ">
       <div className=" flex flex-row justify-center items-center mt-5">
@@ -57,7 +60,6 @@ export default function LoginFunction() {
             <div>
               <img src="./logo.svg" alt="" />
             </div>
-
             <div className="flex flex-col gap-1 justify-center">
               <h1 className="text-xl">Welcome Back</h1>
               <p className="text-base">
@@ -77,7 +79,7 @@ export default function LoginFunction() {
                   try {
                     setValues(values);
                     const res = await fetch(
-                      "http://localhost:8080/users/login",
+                      `${process.env.NEXT_PUBLIC_ENDPOINT}/users/login`,
                       {
                         headers: {
                           Accept: "application/json",
@@ -155,9 +157,7 @@ export default function LoginFunction() {
                 </Form>
               </Formik>
             </div>
-
             {/* Form */}
-
             {/* <form action="" onSubmit={handleInput}>
               <div className="flex flex-col gap-4">
                 <label className="input input-bordered flex items-center gap-2">

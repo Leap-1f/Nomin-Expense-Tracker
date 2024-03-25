@@ -1,25 +1,24 @@
 import { BarChart } from "@/components/Barchart";
 import { HeaderBar } from "../components/Header";
-import { BarChartData } from "./test/Data";
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
+import { barChartData } from "../components/test/data.js";
+
 import { useState } from "react";
 import { DoughnutChart } from "@/components/Piechart";
 
 export default function DashboardFunction() {
   const [chartData, setChartData] = useState({
-    labels: BarChartData.map((data) => data.month),
+    labels: barChartData.map((data) => data.month),
     datasets: [
       {
         label: "Income",
-        data: BarChartData.map((data) => data.income),
+        data: barChartData.map((data) => data.income),
         backgroundColor: "#84CC16",
         borderRadius: [10],
       },
       {
         label: "Expense",
-        data: BarChartData.map((data) => data.expense),
+        data: barChartData.map((data) => data.expense),
         backgroundColor: "#F97316",
         borderRadius: [10],
       },

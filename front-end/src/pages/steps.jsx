@@ -29,15 +29,18 @@ export default function StepsFunction() {
           currency_type: currency,
           balance: balance,
         };
-        const res = await fetch("http://localhost:8080/users/signup", {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-          mode: "cors",
-          body: JSON.stringify(userSavedData),
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_ENDPOINT}/users/signup`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify(userSavedData),
+          }
+        );
         if (res.ok) {
           console.log("User created successfully");
         }
